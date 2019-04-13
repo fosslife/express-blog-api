@@ -9,8 +9,10 @@ r.post('/', (req, res, next) => {
     res.json({ status: 'Success!' });
 });
 
-r.get('/', async (req, res) => {
-    res.end('getting posts');
+r.get('/:slug', async (req, res) => {
+    const searchCriteria = req.params;
+    const doc = await db.findOne(searchCriteria);
+    res.json(doc);
 })
 
 module.exports = r;
