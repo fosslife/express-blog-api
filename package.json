@@ -1,0 +1,12 @@
+{
+  "name": "blogs-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sparkenstein",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.16.4",
+    "nedb-promise": "^2.0.1"
+  }
+}
