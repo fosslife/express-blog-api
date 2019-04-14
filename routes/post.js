@@ -14,14 +14,10 @@ r.get('/tags', async (req, res) => {
     const doc = await db.findAll();
     const tags = doc.reduce((acc, curr) => [...acc, ...curr.tags], [])
         .reduce((acc, curr) => {
-            if (curr in acc) {
-                acc[curr]++;
-            } else {
-                acc[curr] = 1;
-            }
-            return acc
-        }, {});
-    res.json(tags);
+            (curr in acc) ? acc[curr]++ : acc[curr] = 1
+            return acc;
+        }, { });
+res.json(tags);
 })
 
 r.get('/author/:author', async (req, res) => {
