@@ -1,8 +1,8 @@
-const datastore = require('nedb-promise');
+const dbOptions = {
+    verbose: console.log
+}
 
-const DB = datastore({
-    filename: 'storage/db.json',
-    autoload: true
-});
+const db = require('better-sqlite3')('storage/posts.db', dbOptions);
+db.pragma('journal_mode = WAL');
 
-module.exports = DB;
+module.exports = db;
