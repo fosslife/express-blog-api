@@ -2,7 +2,9 @@ const r = require('express').Router();
 const db = require('../db');
 const validateRequest = require('../utils/validateRequests');
 
-r.post('/', validateRequest(), async (req, res) => {
+r.post('/', (req, res, next) => {
+    
+}, async (req, res) => {
     const payload = req.body;
     await db.insert(payload);
     res.json({ status: 'Success!' });
@@ -22,7 +24,12 @@ r.get('/author/:author', async (req, res) => {
 
 r.get('/tag/:tag', async (req, res) => {
     const tags = req.params.tag;
-    const doc = await db.find({ tags: { $in : [tags]} });
+    console.log(tags);
+    if(tags){
+        const doc = await db.find({ tags: { $in : [tags]} });
+    } else {
+        // const doc = await db.findAll() ?
+    }
     res.json(doc);
 })
 
