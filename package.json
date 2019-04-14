@@ -5,8 +5,14 @@
   "author": "Sparkenstein",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "nodemon index.js --ignore storage/"
+  },
   "dependencies": {
     "express": "^4.16.4",
     "nedb-promise": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
