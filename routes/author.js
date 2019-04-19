@@ -1,16 +1,21 @@
 const router = require("express").Router();
-const db = require('../db');
-
-
+const { author } = require('../core');
 
 router.get("/", (req, res) => {
-    const doc = db.findAuthorByName(req.params.author);
+    const doc = author.getAllAuthors();
     res.json(doc).end();
 });
 
-router.post('/', (req, res) => {
-    const authorData = req.body;
-    const doc = d
+router.get("/:name", (req, res) => {
+    const { name } = req.params;
+    const doc = author.getAuthorByName(name);
+    res.json(doc).end();
+});
+
+router.post('/register', (req, res) => {
+    const data = req.body;
+    author.registerAuthor(data);
+    res.end("Registered new author successfully!");
 })
 
 
