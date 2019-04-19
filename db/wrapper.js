@@ -1,11 +1,10 @@
-const DB = require('./db');
+const db = require('./db');
 
 
 const methods = {
-    insert  : DB.insert,
-    find    : DB.find,
-    findAll : () => DB.find({}),
-    findOne : DB.findOne 
+    insert  : db.prepare("INSERT INTO Author(Name, Bio) VALUES(?, ?) "),
+    findAllAuthors    : () => db.prepare("SELECT * FROM Author"),
+    findAuthorByName    : () => db.prepare("SELECT * FROM Author WHERE name = ?"),
 };
 
 module.exports = methods;

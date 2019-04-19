@@ -20,9 +20,10 @@ r.get('/tags', async (req, res) => {
 res.json(tags);
 })
 
-r.get('/author/:author', async (req, res) => {
-    const searchCriteria = req.params;
-    const doc = await db.find(searchCriteria);
+r.get('/author/:author', (req, res) => {
+    const searchCriteria = req.params; // { author: "Spark" }
+    const doc = db.findAuthorByName().all(searchCriteria.author);
+    console.log(doc);
     res.json(doc);
 });
 
