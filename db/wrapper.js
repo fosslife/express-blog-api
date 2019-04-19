@@ -1,10 +1,19 @@
 const db = require('./db');
 
 
-const methods = {
-    insert  : db.prepare("INSERT INTO Author(Name, Bio) VALUES(?, ?) "),
-    findAllAuthors    : () => db.prepare("SELECT * FROM Author"),
-    findAuthorByName    : () => db.prepare("SELECT * FROM Author WHERE name = ?"),
-};
+const createPost = payload => {
+    db.prepare("INSERT INTO Post(Title, Body, Tags, Category, Create_Date, excerpt, Preview_Image, Author_ID, Blog_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)")
+}
 
-module.exports = methods;
+const findAuthorByName = name => {
+    return db.prepare("SELECT * FROM Author WHERE lower(Name) = ? ").all(name.toLowerCase());
+}
+
+const registerAuthor = data => {
+    return db.prepare(`INSERT INTO Author(Name, Bio) VALUES(?, ?);`).run(data)
+}
+module.exports = {
+    createPost,
+    registerAuthor,
+    findAuthorByName,
+};

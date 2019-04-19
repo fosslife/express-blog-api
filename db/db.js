@@ -39,8 +39,6 @@ CREATE TABLE IF NOT EXISTS Post (
 );
 `).run();
 
-db.prepare(`INSERT INTO Blog(Title, Description) VALUES("Fosslife", "A Blog of randomness");`);
-db.prepare(`INSERT INTO Author(Name, Bio) VALUES("Spark", "Fullstack developer");`);
-db.prepare(`INSERT INTO Author(Name, Bio) VALUES("Pavan", "Linux enthusiast");`);
+// db.prepare(`INSERT INTO Blog(Title, Description) VALUES("Fosslife", "A Blog of randomness");`).run();
 
 module.exports = db;
