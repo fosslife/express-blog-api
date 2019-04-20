@@ -10,7 +10,7 @@ const getAllAuthors = () => {
 }
 
 const getAuthorByName = name => {
-    return dbInstance.getAuthorByName.get(name);
+    return dbInstance.getAuthorByName.get(name.toLowerCase());
 }
 
 module.exports = {
