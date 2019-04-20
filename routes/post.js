@@ -1,11 +1,11 @@
 const r = require('express').Router();
-const db = require('../db');
+const { posts } = require('../core');
 const validateRequest = require('../utils/validateRequests');
 
 r.post('/', async (req, res) => {
     const payload = req.body;
-    await db.createPost(payload);
-    res.json({ status: 'Success!' });
+    posts.createPost(payload);
+    res.json({ status: 'Success!' }).end();
 });
 
 // r.get('/tags', async (req, res) => {
@@ -18,12 +18,12 @@ r.post('/', async (req, res) => {
 // res.json(tags);
 // })
 
-r.get('/author/:author', (req, res) => {
-    const searchCriteria = req.params; // { author: "Spark" }
-    const doc = db.findAuthorByName().all(searchCriteria.author);
-    console.log(doc);
-    res.json(doc);
-});
+// r.get('/author/:author', (req, res) => {
+//     const searchCriteria = req.params; // { author: "Spark" }
+//     const doc = db.findAuthorByName().all(searchCriteria.author);
+//     console.log(doc);
+//     res.json(doc);
+// });
 
 // r.get('/tag/:tag', async (req, res) => {
 //     const tags = req.params.tag;
