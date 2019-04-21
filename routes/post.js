@@ -2,21 +2,16 @@ const r = require("express").Router();
 const { posts } = require("../core");
 const validateRequest = require("../utils/validateRequests");
 
-r.post("/register", async (req, res) => {
+r.post("/register", (req, res) => {
     const payload = req.body;
     const doc = posts.createPost(payload);
-    res.json(doc).end();
+    res.json(doc);
 });
 
-// r.get('/tags', async (req, res) => {
-//     const doc = await db.findAll();
-//     const tags = doc.reduce((acc, curr) => [...acc, ...curr.tags], [])
-//         .reduce((acc, curr) => {
-//             (curr in acc) ? acc[curr]++ : acc[curr] = 1
-//             return acc;
-//         }, { });
-// res.json(tags);
-// })
+r.get('/tag/:tag', (req, res) => {
+    const doc = posts.getPostByTags(req.params.tag);
+    res.json(doc);
+})
 
 // r.get('/author/:author', (req, res) => {
 //     const searchCriteria = req.params; // { author: "Spark" }

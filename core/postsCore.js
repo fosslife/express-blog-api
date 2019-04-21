@@ -23,6 +23,12 @@ const createPost = payload => {
     return r;
 };
 
+const getPostByTags = tags => {
+    console.log(tags);
+    return dbInstance.getPostByTags.all(tags);
+}
+
 module.exports = {
     createPost,
+    getPostByTags,
 };
