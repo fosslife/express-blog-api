@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS Post (
     Title TEXT NOT NULL,
     Body TEXT NOT NULL,
     Tags TEXT,
+    Slug TEXT NOT NULL,
     Category TEXT,
     Create_Date TEXT NOT NULL,
     excerpt TEXT,
