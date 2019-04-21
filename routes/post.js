@@ -2,10 +2,10 @@ const r = require("express").Router();
 const { posts } = require("../core");
 const validateRequest = require("../utils/validateRequests");
 
-r.post("/", async (req, res) => {
+r.post("/register", async (req, res) => {
     const payload = req.body;
-    posts.createPost(payload);
-    res.json({ status: "Success!" }).end();
+    const doc = posts.createPost(payload);
+    res.json(doc).end();
 });
 
 // r.get('/tags', async (req, res) => {
