@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { author } = require('../core');
+const { author } = require("../core");
 
 router.get("/", (req, res) => {
     const doc = author.getAllAuthors();
@@ -12,11 +12,11 @@ router.get("/:name", (req, res) => {
     res.json(doc).end();
 });
 
-router.post('/register', (req, res) => {
+router.post("/register", (req, res) => {
     const data = req.body;
     author.registerAuthor(data);
     res.end("Registered new author successfully!");
-})
+});
 
 
 module.exports = router;
