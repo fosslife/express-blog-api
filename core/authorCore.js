@@ -1,8 +1,8 @@
 const dbInstance = require("../db");
 
 const registerAuthor = data => {
-    const { name, bio } = data;
-    return dbInstance.registerAuthor.run(name, bio);
+    const { Name, Bio } = data;
+    return dbInstance.registerAuthor.run(Name, Bio);
 };
 
 const getAllAuthors = () => {
