@@ -4,7 +4,7 @@ const registerBlog = db.prepare("INSERT INTO Blog(Title, Description) VALUES(?, 
 
 const getBlogByName = db.prepare("SELECT * FROM Blog WHERE lower(Title) = ?");
 
-const insertPost = db.prepare("INSERT INTO Post(Title, Body, Tags, Category, Create_Date, excerpt, Preview_Image, Author_ID, Blog_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+const registerPost = db.prepare("INSERT INTO Post(Title, Body, Tags, Slug, Category, Create_Date, excerpt, Preview_Image, Author_ID, Blog_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 const getAuthorByName = db.prepare("SELECT * FROM Author WHERE lower(Name) = ? ");
 
@@ -15,7 +15,7 @@ const getAllAuthors = db.prepare("SELECT DISTINCT(Name), Bio from Author");
 module.exports = {
     registerBlog,
     getBlogByName,
-    insertPost,
+    registerPost,
     getAuthorByName,
     registerAuthor,
     getAllAuthors,
