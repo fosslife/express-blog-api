@@ -5,7 +5,7 @@ const createPost = payload => {
     const { title, slug, author, date, excerpt, preview, post, tags, blog } = payload;
 
     return {};
-}
+};
 
 module.exports = {
     createPost,

@@ -1,4 +1,4 @@
-const dbInstance = require('../db');
+const dbInstance = require("../db");
 
 const registerAuthor = data => {
     const { name, bio } = data;
@@ -7,14 +7,14 @@ const registerAuthor = data => {
 
 const getAllAuthors = () => {
     return dbInstance.getAllAuthors.all();
-}
+};
 
 const getAuthorByName = name => {
     return dbInstance.getAuthorByName.get(name.toLowerCase());
-}
+};
 
 module.exports = {
     registerAuthor,
     getAllAuthors,
     getAuthorByName,
-}
+};

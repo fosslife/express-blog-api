@@ -1,11 +1,11 @@
-const r = require('express').Router();
-const { posts } = require('../core');
-const validateRequest = require('../utils/validateRequests');
+const r = require("express").Router();
+const { posts } = require("../core");
+const validateRequest = require("../utils/validateRequests");
 
-r.post('/', async (req, res) => {
+r.post("/", async (req, res) => {
     const payload = req.body;
     posts.createPost(payload);
-    res.json({ status: 'Success!' }).end();
+    res.json({ status: "Success!" }).end();
 });
 
 // r.get('/tags', async (req, res) => {

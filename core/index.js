@@ -1,6 +1,6 @@
-const posts = require('./postsCore');
-const author = require('./authorCore');
-const blogs = require('./blogsCore');
+const posts = require("./postsCore");
+const author = require("./authorCore");
+const blogs = require("./blogsCore");
 
 module.exports = {
     posts,

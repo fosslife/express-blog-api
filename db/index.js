@@ -1,3 +1,3 @@
-const db = require('./wrapper');
+const db = require("./wrapper");
 
 module.exports = db;
