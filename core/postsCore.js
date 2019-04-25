@@ -1,10 +1,7 @@
 const dbInstance = require("../db");
 
 const createPost = payload => {
-    // console.log(payload);
     const { title, slug, author, excerpt, preview, post, tags, blog, category } = payload;
-    // const authorId = dbInstance.getAuthorByName.get(author.toLowerCase()).ID;
-    // const blogId = dbInstance.getBlogByName.get(blog.toLowerCase()).ID;
     const { authorId, blogId } = dbInstance.getAuthorAndBlogID.get(author.toLowerCase(), blog.toLowerCase());
     const createDate = new Date().getTime();
 
@@ -25,8 +22,7 @@ const createPost = payload => {
 };
 
 const getPostByTags = tags => {
-    console.log(tags);
-    return dbInstance.getPostByTags.all(tags);
+    return dbInstance.getPostByTags.all(`%${tags}%`);
 }
 
 module.exports = {
