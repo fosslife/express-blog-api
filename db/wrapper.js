@@ -8,7 +8,7 @@ const getBlogByName = db.prepare("SELECT * FROM Blog WHERE lower(Title) = ?");
 // Post queries
 const registerPost = db.prepare("INSERT INTO Post(Title, Body, Tags, Slug, Category, Create_Date, excerpt, Preview_Image, Author_ID, Blog_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-const getPostByTags = db.prepare(`SELECT * FROM Post WHERE Tags LIKE lower(%?%)`);
+const getPostByTags = db.prepare(`SELECT * FROM Post WHERE Tags LIKE lower(?)`);
 
 // Author queries
 const getAuthorByName = db.prepare("SELECT * FROM Author WHERE lower(Name) = ? ");
@@ -16,6 +16,10 @@ const getAuthorByName = db.prepare("SELECT * FROM Author WHERE lower(Name) = ? "
 const registerAuthor = db.prepare("INSERT INTO Author(Name, Bio) VALUES(?, ?);");
 
 const getAllAuthors = db.prepare("SELECT DISTINCT(Name), Bio from Author");
+
+// Misc.
+const getAuthorAndBlogID = db.prepare("SELECT author.ID as authorId, blog.ID as blogId FROM Author as author, Blog as blog WHERE lower(author.Name)=? AND lower(blog.Title)=?");
+
 
 module.exports = {
     registerBlog,
@@ -25,4 +29,5 @@ module.exports = {
     getAuthorByName,
     registerAuthor,
     getAllAuthors,
+    getAuthorAndBlogID
 };

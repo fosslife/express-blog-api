@@ -3,14 +3,15 @@ const dbInstance = require("../db");
 const createPost = payload => {
     // console.log(payload);
     const { title, slug, author, excerpt, preview, post, tags, blog, category } = payload;
-    const authorId = dbInstance.getAuthorByName.get(author.toLowerCase()).ID;
-    const blogId = dbInstance.getBlogByName.get(blog.toLowerCase()).ID;
+    // const authorId = dbInstance.getAuthorByName.get(author.toLowerCase()).ID;
+    // const blogId = dbInstance.getBlogByName.get(blog.toLowerCase()).ID;
+    const { authorId, blogId } = dbInstance.getAuthorAndBlogID.get(author.toLowerCase(), blog.toLowerCase());
     const createDate = new Date().getTime();
 
     const r = dbInstance.registerPost.run(
         title,                       // Title
         post,                        // Body
-        JSON.stringify(tags),        // Tags, nullable
+        tags.join(),                 // Tags, nullable
         slug,                        // Slug
         category,                    // Category, nullable
         createDate,                  // Create_Date
