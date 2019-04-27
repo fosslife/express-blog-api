@@ -8,11 +8,11 @@ const getBlogByName = db.prepare("SELECT * FROM Blog WHERE lower(Title) = ?");
 // Post queries
 const registerPost = db.prepare("INSERT INTO Post(Title, Body, Tags, Slug, Category, Create_Date, excerpt, Preview_Image, Author_ID, Blog_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-const getPostByTags = db.prepare("SELECT * FROM Post WHERE Tags LIKE lower(?) AND Blog_ID=(SELECT ID FROM Blog where Title=?)");
+const getPostByTags = db.prepare("SELECT Post.* FROM Post INNER JOIN Blog ON Post.Blog_ID = Blog.ID WHERE Blog.Title=? AND Post.tags like ?");
 
 const getPostBySlug = db.prepare("SELECT * FROM Post WHERE slug=?");
 
-const getPostByAuthor = db.prepare("SELECT * FROM Post WHERE Author_ID=(SELECT ID FROM Author WHERE lower(Name)=?)");
+const getPostByAuthor = db.prepare("SELECT Post.* FROM Post INNER JOIN Author ON Post.Author_ID = Author.ID INNER JOIN Blog ON Post.Blog_ID = Blog.ID WHERE lower(Author.name) =? AND Blog.Title = ?");
 
 // Author queries
 const getAuthorByName = db.prepare("SELECT * FROM Author WHERE lower(Name) = ? ");

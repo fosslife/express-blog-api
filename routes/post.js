@@ -14,8 +14,9 @@ r.get("/:blog/tag/:tag", (req, res) => {
     res.json(doc);
 });
 
-r.get("/author/:author", (req, res) => {
-    const doc = posts.getPostByAuthor(req.params.author);
+r.get("/:blog/author/:author", (req, res) => {
+    const { blog, author } = req.params;
+    const doc = posts.getPostByAuthor(blog, author);
     res.json(doc);
 });
 

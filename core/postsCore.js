@@ -22,11 +22,11 @@ const createPost = payload => {
 };
 
 const getPostByTags = (blog, tags) => {
-    return dbInstance.getPostByTags.all(`%${tags}%`, blog);
+    return dbInstance.getPostByTags.all(blog, `%${tags}%`);
 };
 
-const getPostByAuthor = name => {
-    return dbInstance.getPostByAuthor.all(name.toLowerCase());
+const getPostByAuthor = (blog, author) => {
+    return dbInstance.getPostByAuthor.all(author.toLowerCase(), blog);
 };
 
 const getPostBySlug = slug => {
