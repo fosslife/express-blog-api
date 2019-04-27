@@ -1,9 +1,8 @@
 const dbInstance = require("../db");
 
 const createPost = payload => {
-    const { title, slug, author, excerpt, preview, post, tags, blog, category } = payload;
+    const { title, slug, author, excerpt, preview, post, tags, blog, category, createDate } = payload;
     const { authorId, blogId } = dbInstance.getAuthorAndBlogID.get(author.toLowerCase(), blog.toLowerCase());
-    const createDate = new Date().getTime();
 
     const r = dbInstance.registerPost.run(
         title,                       // Title

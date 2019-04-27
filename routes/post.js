@@ -2,7 +2,7 @@ const r = require("express").Router();
 const { posts } = require("../core");
 const validateRequest = require("../utils/validateRequests");
 
-r.post("/register", (req, res) => {
+r.post("/register", validateRequest(), (req, res) => {
     const payload = req.body;
     const doc = posts.createPost(payload);
     res.json(doc);
