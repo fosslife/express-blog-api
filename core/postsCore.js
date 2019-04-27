@@ -25,7 +25,12 @@ const getPostByTags = tags => {
     return dbInstance.getPostByTags.all(`%${tags}%`);
 };
 
+const getPostByAuthor = name => {
+    return dbInstance.getPostByAuthor.all(`${name.toLowerCase()}`);
+};
+
 module.exports = {
     createPost,
     getPostByTags,
+    getPostByAuthor,
 };
