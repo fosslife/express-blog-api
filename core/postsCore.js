@@ -23,7 +23,7 @@ const createPost = payload => {
 
 const getPostByTags = tags => {
     return dbInstance.getPostByTags.all(`%${tags}%`);
-}
+};
 
 module.exports = {
     createPost,
