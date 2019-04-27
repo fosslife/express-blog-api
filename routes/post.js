@@ -8,10 +8,10 @@ r.post("/register", (req, res) => {
     res.json(doc);
 });
 
-r.get('/tag/:tag', (req, res) => {
+r.get("/tag/:tag", (req, res) => {
     const doc = posts.getPostByTags(req.params.tag);
     res.json(doc);
-})
+});
 
 // r.get('/author/:author', (req, res) => {
 //     const searchCriteria = req.params; // { author: "Spark" }
