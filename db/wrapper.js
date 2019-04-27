@@ -10,7 +10,7 @@ const registerPost = db.prepare("INSERT INTO Post(Title, Body, Tags, Slug, Categ
 
 const getPostByTags = db.prepare("SELECT Post.* FROM Post INNER JOIN Blog ON Post.Blog_ID = Blog.ID WHERE Blog.Title=? AND Post.tags like ?");
 
-const getPostBySlug = db.prepare("SELECT * FROM Post WHERE slug=?");
+const getPostBySlug = db.prepare("SELECT Post.* FROM Post INNER JOIN Blog ON Post.Blog_ID = Blog.ID WHERE Post.slug=? AND Blog.Title=?");
 
 const getPostByAuthor = db.prepare("SELECT Post.* FROM Post INNER JOIN Author ON Post.Author_ID = Author.ID INNER JOIN Blog ON Post.Blog_ID = Blog.ID WHERE lower(Author.name) =? AND Blog.Title = ?");
 

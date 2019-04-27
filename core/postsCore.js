@@ -29,8 +29,8 @@ const getPostByAuthor = (blog, author) => {
     return dbInstance.getPostByAuthor.all(author.toLowerCase(), blog);
 };
 
-const getPostBySlug = slug => {
-    return dbInstance.getPostBySlug.all(slug.toLowerCase());
+const getPostBySlug = (blog, slug) => {
+    return dbInstance.getPostBySlug.all(slug.toLowerCase(), blog);
 };
 
 module.exports = {

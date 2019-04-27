@@ -20,8 +20,9 @@ r.get("/:blog/author/:author", (req, res) => {
     res.json(doc);
 });
 
-r.get("/:slug", async (req, res) => {
-    const doc = posts.getPostBySlug(req.params.slug);
+r.get("/:blog/:slug", async (req, res) => {
+    const { blog, slug } = req.params;
+    const doc = posts.getPostBySlug(blog, slug);
     res.json(doc);
 });
 
