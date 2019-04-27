@@ -14,6 +14,10 @@ const getPostBySlug = db.prepare("SELECT Post.* FROM Post INNER JOIN Blog ON Pos
 
 const getPostByAuthor = db.prepare("SELECT Post.* FROM Post INNER JOIN Author ON Post.Author_ID = Author.ID INNER JOIN Blog ON Post.Blog_ID = Blog.ID WHERE lower(Author.name) =? AND Blog.Title = ?");
 
+const getAllPosts = db.prepare("SELECT Post.* FROM Post INNER JOIN Blog On Post.Blog_ID = Blog.ID WHERE Blog.Title = ?");
+
+const getAllPostsWithLimit = db.prepare("SELECT Post.* FROM Post INNER JOIN Blog On Post.Blog_ID = Blog.ID WHERE Blog.Title = ? LIMIT ? OFFSET ?");
+
 // Author queries
 const getAuthorByName = db.prepare("SELECT * FROM Author WHERE lower(Name) = ? ");
 
@@ -31,6 +35,8 @@ module.exports = {
     registerPost,
     getPostByTags,
     getPostByAuthor,
+    getAllPosts,
+    getAllPostsWithLimit,
     getPostBySlug,
     getAuthorByName,
     registerAuthor,

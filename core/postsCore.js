@@ -32,9 +32,19 @@ const getPostBySlug = (blog, slug) => {
     return dbInstance.getPostBySlug.all(slug.toLowerCase(), blog);
 };
 
+const getAllPosts = (blog, queryParams) => {
+    const { pageSize, pageNumber } = queryParams;
+    if (!pageSize && !pageNumber) {
+        return dbInstance.getAllPosts.all(blog);
+    }
+    const offset = pageSize * pageNumber;
+    return dbInstance.getAllPostsWithLimit.all(blog, pageSize, offset);
+};
+
 module.exports = {
     createPost,
     getPostByTags,
     getPostByAuthor,
     getPostBySlug,
+    getAllPosts
 };
