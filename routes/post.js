@@ -13,12 +13,10 @@ r.get("/tag/:tag", (req, res) => {
     res.json(doc);
 });
 
-// r.get('/author/:author', (req, res) => {
-//     const searchCriteria = req.params; // { author: "Spark" }
-//     const doc = db.findAuthorByName().all(searchCriteria.author);
-//     console.log(doc);
-//     res.json(doc);
-// });
+r.get("/author/:author", (req, res) => {
+    const doc = posts.getPostByAuthor(req.params.author);
+    res.json(doc);
+});
 
 // r.get('/tag/:tag', async (req, res) => {
 //     const tags = req.params.tag;
