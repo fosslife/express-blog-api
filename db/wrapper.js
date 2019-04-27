@@ -10,6 +10,8 @@ const registerPost = db.prepare("INSERT INTO Post(Title, Body, Tags, Slug, Categ
 
 const getPostByTags = db.prepare("SELECT * FROM Post WHERE Tags LIKE lower(?)");
 
+const getPostBySlug = db.prepare("SELECT * FROM Post WHERE slug=?");
+
 const getPostByAuthor = db.prepare("SELECT * FROM Post WHERE Author_ID=(SELECT ID FROM Author WHERE lower(Name)=?)");
 
 // Author queries
@@ -29,6 +31,7 @@ module.exports = {
     registerPost,
     getPostByTags,
     getPostByAuthor,
+    getPostBySlug,
     getAuthorByName,
     registerAuthor,
     getAllAuthors,
