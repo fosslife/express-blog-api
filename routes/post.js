@@ -8,8 +8,9 @@ r.post("/register", (req, res) => {
     res.json(doc);
 });
 
-r.get("/tag/:tag", (req, res) => {
-    const doc = posts.getPostByTags(req.params.tag);
+r.get("/:blog/tag/:tag", (req, res) => {
+    const { blog, tag } = req.params;
+    const doc = posts.getPostByTags(blog, tag);
     res.json(doc);
 });
 

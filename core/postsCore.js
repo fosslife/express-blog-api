@@ -21,16 +21,16 @@ const createPost = payload => {
     return r;
 };
 
-const getPostByTags = tags => {
-    return dbInstance.getPostByTags.all(`%${tags}%`);
+const getPostByTags = (blog, tags) => {
+    return dbInstance.getPostByTags.all(`%${tags}%`, blog);
 };
 
 const getPostByAuthor = name => {
-    return dbInstance.getPostByAuthor.all(`${name.toLowerCase()}`);
+    return dbInstance.getPostByAuthor.all(name.toLowerCase());
 };
 
 const getPostBySlug = slug => {
-    return dbInstance.getPostBySlug.all(`${slug.toLowerCase()}`);
+    return dbInstance.getPostBySlug.all(slug.toLowerCase());
 };
 
 module.exports = {
