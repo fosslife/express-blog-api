@@ -20,10 +20,14 @@ r.get("/:blog/author/:author", (req, res) => {
     res.json(doc);
 });
 
-r.get("/:blog/:slug", async (req, res) => {
+r.get("/:blog/:slug", (req, res) => {
     const { blog, slug } = req.params;
     const doc = posts.getPostBySlug(blog, slug);
     res.json(doc);
+});
+
+r.get("/:blog/all", (req, res) => {
+    
 });
 
 module.exports = r;
