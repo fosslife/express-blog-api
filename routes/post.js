@@ -18,16 +18,9 @@ r.get("/author/:author", (req, res) => {
     res.json(doc);
 });
 
-// r.get('/tag/:tag', async (req, res) => {
-//     const tags = req.params.tag;
-//     const doc = await db.find({ tags: { $in: [tags] } });
-//     res.json(doc);
-// });
-
-// r.get('/:slug', async (req, res) => {
-//     const searchCriteria = req.params;
-//     const doc = await db.findOne(searchCriteria);
-//     res.json(doc);
-// })
+r.get("/:slug", async (req, res) => {
+    const doc = posts.getPostBySlug(req.params.slug);
+    res.json(doc);
+});
 
 module.exports = r;
