@@ -1,8 +1,4 @@
-const dbOptions = {
-    verbose: console.log
-};
-
-const db = require("better-sqlite3")("storage/posts.db", dbOptions);
+const db = require("better-sqlite3")("storage/posts.db");
 db.pragma("journal_mode = WAL");
 
 db.prepare(`
